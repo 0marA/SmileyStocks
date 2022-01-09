@@ -1,19 +1,25 @@
-var Stocks = require('stocks.js');
-var stocks = new Stocks('2M9IZUR12L6RNBO9');
+const finnhub = require('finnhub');
 
-symbols = ["'TSLA'", "'AAPL'", "'COST'"];
+const api_key = finnhub.ApiClient.instance.authentications['api_key'];
+api_key.apiKey = 'c7df8tiad3i911lpfov0';
+const finnhubClient = new finnhub.DefaultApi();
 
-for (let i = 0; i < symbols.length; i++) {
-	request(symbols[i]);
-	console.log(symbols[i]);
-}
+// Price target
+finnhubClient.priceTarget('AAPL', (error, data, response) => {
+	console.log(data);
+});
 
-async function request(input) {
-	var result = await stocks.timeSeries({
-		symbol: input,
-		interval: '1min',
-		amount: 1,
-	});
+//Quote
+finnhubClient.quote('AAPL', (error, data, response) => {
+	console.log(data);
+});
 
-	console.log(JSON.stringify(result));
-}
+finnhubClient.stockTick(
+	'AAPL',
+	'2020-03-25',
+	500,
+	0,
+	(error, data, response) => {
+		console.log(data);
+	}
+);
