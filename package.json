@@ -1,15 +1,17 @@
 {
-  "name": "bruh",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "name": "smileystocks",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5050"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "stocks.js": "^0.0.19"
+    "finnhub": "^1.2.11",
+    "vue": "^3.2.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.2",
+    "vite": "^2.8.4"
   }
 }
