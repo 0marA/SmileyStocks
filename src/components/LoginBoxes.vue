@@ -44,7 +44,7 @@
 .submitButton {
   position: relative;
   top: 80px;
-  right: 10px;
+  right: 12px;
 }
 
 .newAccountButton {

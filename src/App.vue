@@ -1,27 +1,21 @@
 <script setup>
-import Login from "./components/Login.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <div class="welcome">
-    <h1 style="position: relative; right: -70px">Welcome to Smiley Stocks!</h1>
-    <h2>Please enter your credentials or make a new account :)</h2>
+  <div class="RouterView">
+    <RouterView />
   </div>
-
-  <div class="login">
-    <Login />
-  </div>
+  <nav>
+    <RouterLink to="/login" style="position:relative right: -200"
+      >Login</RouterLink
+    >
+    <RouterLink to="/">Dashboard</RouterLink>
+  </nav>
 </template>
 
 <style scoped>
-.welcome {
-  position: relative;
-  right: -50px;
-  top: 300px;
-  color: rgb(19, 83, 19);
-}
-
-.login {
+.RouterView {
   position: relative;
   left: 1200px;
   top: 130px;

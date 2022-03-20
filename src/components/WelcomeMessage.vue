@@ -2,21 +2,27 @@
 defineProps({
   msg: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+  msg2: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+  <div class="welcome">
+    <h1 style="position: relative; right: -70px">{{ msg }}</h1>
+    <h2>{{ msg2 }}</h2>
   </div>
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6;
-  top: -10px;
+.welcome {
+  position: relative;
+  right: -50px;
+  top: 300px;
+  color: rgb(19, 83, 19);
 }
 </style>
