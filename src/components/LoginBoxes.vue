@@ -24,7 +24,7 @@
     <button
       class="buttons"
       style="position: relative; top: 30px"
-      @click="$router.push('/')"
+      @click="$router.push('/newaccount')"
       id="newAccount"
     >
       New Account
@@ -32,8 +32,8 @@
     <button
       class="buttons"
       style="position: relative; top: 30px; left: 180px"
-      @click="$router.push('/')"
-      id="newAccount"
+      @click="$router.push('/dashboard')"
+      id="submit"
     >
       Submit
     </button>
