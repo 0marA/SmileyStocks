@@ -1,5 +1,5 @@
 <template>
-  <div class="usernameTextbox">
+  <div class="UsernameTextbox">
     <textarea
       class="textbox"
       type="textarea"
@@ -9,7 +9,7 @@
       placeholder="Username"
     ></textarea>
   </div>
-  <div class="passwordTextbox">
+  <div class="PasswordTextbox">
     <input
       type="password"
       class="textbox"
@@ -20,34 +20,44 @@
       placeholder="Password"
     />
   </div>
-  <div class="submitButton">
-    <button class="buttons" onclick="submit()" id="SUBMIT">Submit</button>
-  </div>
-  <div class="newAccountButton">
-    <button class="buttons" onclick="newAccount()" id="newAccount">
+  <div class="Buttons">
+    <button
+      class="buttons"
+      style="position: relative; top: 30px"
+      @click="$router.push('/')"
+      id="newAccount"
+    >
       New Account
+    </button>
+    <button
+      class="buttons"
+      style="position: relative; top: 30px; left: 180px"
+      @click="$router.push('/')"
+      id="newAccount"
+    >
+      Submit
     </button>
   </div>
 </template>
 
 <style scoped>
-.usernameTextbox {
+.UsernameTextbox {
   position: relative;
   top: 30px;
 }
 
-.passwordTextbox {
+.PasswordTextbox {
   position: relative;
   top: 50px;
 }
 
-.submitButton {
+.SubmitButton {
   position: relative;
   top: 80px;
   right: 12px;
 }
 
-.newAccountButton {
+.Buttons {
   position: relative;
   top: 40px;
   right: 150px;

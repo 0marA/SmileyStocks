@@ -4,14 +4,8 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <div class="RouterView">
-    <RouterView />
+    <RouterView class="RouterView" />
   </div>
-  <nav>
-    <RouterLink to="/login" style="position:relative right: -200"
-      >Login</RouterLink
-    >
-    <RouterLink to="/">Dashboard</RouterLink>
-  </nav>
 </template>
 
 <style scoped>
