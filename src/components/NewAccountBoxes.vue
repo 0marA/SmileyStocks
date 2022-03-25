@@ -1,37 +1,36 @@
 <template>
-  <div class="UsernameTextbox">
-    <textarea
-      class="textbox"
-      type="textarea"
-      id="USERNAME"
-      rows="1"
-      columns="3"
-      placeholder="Username"
-    ></textarea>
-  </div>
-  <div class="PasswordTextbox">
-    <input
-      type="password"
-      class="textbox"
-      input
-      id="PASSWORD"
-      rows="1"
-      columns="3"
-      placeholder="Password"
-    />
-  </div>
+  <textarea
+    class="textbox"
+    type="textarea"
+    id="USERNAME"
+    rows="1"
+    columns="3"
+    placeholder="Username"
+    style="position: relative; top: -200x; left: 866px"
+  ></textarea>
+  <input
+    type="password"
+    class="textbox"
+    input
+    id="PASSWORD"
+    rows="1"
+    columns="3"
+    placeholder="Password"
+    style="position: relative; top: 40px; left: 700px"
+  />
+
   <div class="Buttons">
     <button
       class="buttons"
-      style="position: relative; top: 30px; left: 200px"
+      style="position: relative; top: 30px; right: -150px"
       @click="$router.push('/')"
-      id="BACK"
+      id="GOBACK"
     >
-      Go Back
+      New Account
     </button>
     <button
       class="buttons"
-      style="position: relative; top: 30px; left: 260px"
+      style="position: relative; top: 30px; left: 160px"
       @click="$router.push('/dashboard')"
       id="SUBMIT"
     >
@@ -41,20 +40,11 @@
 </template>
 
 <style scoped>
-.UsernameTextbox {
-  position: relative;
-  top: 30px;
-}
-
-.PasswordTextbox {
-  position: relative;
-  top: 50px;
-}
-
 .Buttons {
   position: relative;
-  top: 40px;
-  right: 200px;
+  top: 30px;
+  left: 718px;
+  max-width: 400px;
 }
 .textbox {
   resize: none;
@@ -64,7 +54,6 @@
 
 .buttons {
   position: relative;
-  right: -150px;
-  padding: 10px;
+  padding: 5px;
 }
 </style>

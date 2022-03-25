@@ -10,16 +10,19 @@ import WelcomeMessage from "/src/components/WelcomeMessage.vue";
       style="position: relative; left: 70px"
     />
   </div>
-  <NewAccountBoxes style="position: relative; left: 500px" />
+  <div class="NewAccountBoxes">
+    <NewAccountBoxes />
+  </div>
 </template>
 
 <style scoped>
 .WelcomeMessage {
   position: relative;
-  right: 1200px;
-  top: -130px;
+  top: 80px;
 }
-html {
-  overflow-x: hidden;
+
+.NewAccountBoxes {
+  position: relative;
+  top: -40px;
 }
 </style>

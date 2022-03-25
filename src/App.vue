@@ -11,8 +11,6 @@ import { RouterLink, RouterView } from "vue-router";
 <style scoped>
 .RouterView {
   position: relative;
-  left: 1200px;
   top: 130px;
-  max-width: 600px;
 }
 </style>

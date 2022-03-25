@@ -10,13 +10,19 @@ import WelcomeMessage from "/src/components/WelcomeMessage.vue";
       msg2="Please enter your credentials or make a new account :)"
     />
   </div>
-  <LoginBoxes newAccountButton="true" />
+  <div class="LoginBoxes">
+    <LoginBoxes />
+  </div>
 </template>
 
 <style scoped>
 .WelcomeMessage {
   position: relative;
-  right: 1200px;
-  top: -130px;
+  top: 80px;
+}
+
+.LoginBoxes {
+  position: relative;
+  top: -40px;
 }
 </style>
