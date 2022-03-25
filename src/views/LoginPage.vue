@@ -10,7 +10,7 @@ import WelcomeMessage from "/src/components/WelcomeMessage.vue";
       msg2="Please enter your credentials or make a new account :)"
     />
   </div>
-  <LoginBoxes />
+  <LoginBoxes newAccountButton="true" />
 </template>
 
 <style scoped>

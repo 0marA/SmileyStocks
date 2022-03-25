@@ -18,23 +18,22 @@
       rows="1"
       columns="3"
       placeholder="Password"
-      size="50"
     />
   </div>
   <div class="Buttons">
     <button
       class="buttons"
-      style="position: relative; top: 30px"
-      @click="$router.push('/newaccount')"
-      id="newAccount"
+      style="position: relative; top: 30px; left: 200px"
+      @click="$router.push('/')"
+      id="BACK"
     >
-      New Account
+      Go Back
     </button>
     <button
       class="buttons"
-      style="position: relative; top: 30px; left: 180px"
+      style="position: relative; top: 30px; left: 260px"
       @click="$router.push('/dashboard')"
-      id="submit"
+      id="SUBMIT"
     >
       Submit
     </button>
@@ -45,21 +44,17 @@
 .UsernameTextbox {
   position: relative;
   top: 30px;
-  width: 1000px;
-  max-width: 600px;
 }
 
 .PasswordTextbox {
   position: relative;
   top: 50px;
-  max-width: 600px;
 }
 
 .Buttons {
   position: relative;
   top: 40px;
-  right: 150px;
-  max-width: 1000px;
+  right: 200px;
 }
 .textbox {
   resize: none;

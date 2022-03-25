@@ -4,7 +4,7 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <div class="RouterView">
-    <RouterView class="RouterView" />
+    <RouterView />
   </div>
 </template>
 
@@ -13,5 +13,6 @@ import { RouterLink, RouterView } from "vue-router";
   position: relative;
   left: 1200px;
   top: 130px;
+  max-width: 600px;
 }
 </style>
