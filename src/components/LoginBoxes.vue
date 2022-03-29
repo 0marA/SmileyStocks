@@ -24,15 +24,15 @@
       class="buttons"
       style="position: relative; top: 30px; right: -150px"
       @click="$router.push('/newaccount')"
-      id="newAccount"
+      id="NEWACCOUNT"
     >
       New Account
     </button>
     <button
       class="buttons"
       style="position: relative; top: 30px; left: 160px"
-      @click="$router.push('/dashboard')"
-      id="submit"
+      @click="submit"
+      id="SUBMIT"
     >
       Submit
     </button>
@@ -57,3 +57,13 @@
   padding: 5px;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    submit() {
+      alert("Logging you in...");
+    },
+  },
+};
+</script>

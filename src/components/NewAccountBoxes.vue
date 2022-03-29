@@ -26,11 +26,11 @@
       @click="$router.push('/')"
       id="GOBACK"
     >
-      New Account
+      Go back
     </button>
     <button
       class="buttons"
-      style="position: relative; top: 30px; left: 160px"
+      style="position: relative; top: 30px; left: 190px"
       @click="$router.push('/dashboard')"
       id="SUBMIT"
     >
