@@ -71,9 +71,10 @@ export default {
     authenticate() {
       let username = document.getElementById("USERNAME").value;
       let password = document.getElementById("PASSWORD").value;
-      //if (password == accounts[username][0].password) alert("Succesful Login");
-      //else alert("Invalid Credentials");
-      alert(JSON.stringify(accountData.OmarA));
+      if (password == accountData[username][0].password)
+        alert("Succesful Login");
+      else alert("Invalid Credentials");
+      //alert(JSON.stringify(accountData.OmarA));
     },
   },
 };
