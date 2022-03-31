@@ -1,4 +1,3 @@
-<script setup></script>
 <template>
   <textarea
     class="textbox"
@@ -60,14 +59,21 @@
 </style>
 
 <script>
+import accountData from "/src/components/accounts.json";
+
 export default {
+  data() {
+    return {
+      accounts: accountData,
+    };
+  },
   methods: {
     authenticate() {
       let username = document.getElementById("USERNAME").value;
       let password = document.getElementById("PASSWORD").value;
-      alert(accounts[username][0].password);
-      if (password == accounts[username][0].password) alert("Succesful Login");
-      else alert("Invalid Credentials");
+      //if (password == accounts[username][0].password) alert("Succesful Login");
+      //else alert("Invalid Credentials");
+      alert(JSON.stringify(accountData.OmarA));
     },
   },
 };
