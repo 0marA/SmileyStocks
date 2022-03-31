@@ -1,3 +1,4 @@
+<script setup></script>
 <template>
   <textarea
     class="textbox"
@@ -31,7 +32,7 @@
     <button
       class="buttons"
       style="position: relative; top: 30px; left: 160px"
-      @click="submit"
+      @click="authenticate"
       id="SUBMIT"
     >
       Submit
@@ -61,8 +62,12 @@
 <script>
 export default {
   methods: {
-    submit() {
-      alert("Logging you in...");
+    authenticate() {
+      let username = document.getElementById("USERNAME").value;
+      let password = document.getElementById("PASSWORD").value;
+      alert(accounts[username][0].password);
+      if (password == accounts[username][0].password) alert("Succesful Login");
+      else alert("Invalid Credentials");
     },
   },
 };
