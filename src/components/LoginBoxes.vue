@@ -58,27 +58,4 @@
 }
 </style>
 
-<script>
-import accountData from "/accounts.json";
-import router from "../router";
-import { setUserPath } from "../router";
-
-export default {
-    data() {
-        return {
-            accounts: accountData,
-        };
-    },
-    methods: {
-        authenticate() {
-            let username = document.getElementById("USERNAME").value;
-            let password = document.getElementById("PASSWORD").value;
-            if (password == accountData[username][0].password) {
-                setUserPath(username.toLowerCase());
-                router.push("/" + username.toLowerCase() + "dashboard");
-                reload();
-            } else alert("Invalid Credentials");
-        },
-    },
-};
-</script>
+<script src="../scripts/authenticate.js"></script>
