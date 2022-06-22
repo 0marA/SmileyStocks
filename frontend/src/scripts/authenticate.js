@@ -1,4 +1,3 @@
-import accounts from "/accounts.json";
 import router from "../router";
 import { setUserPath } from "../router";
 
