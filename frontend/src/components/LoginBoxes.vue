@@ -16,7 +16,7 @@
         rows="1"
         columns="3"
         placeholder="Password"
-        style="position: relative; top: 40px; left: 700px"
+        style="position: relative; top: 40px; left: 590px"
     />
 
     <div class="Buttons">
@@ -34,7 +34,7 @@
             @click="authenticate"
             id="SUBMIT"
         >
-            Submit
+            Submi
         </button>
     </div>
 </template>

@@ -1,28 +1,21 @@
 <script setup>
-import NewAccountBoxes from "/src/components/NewAccountBoxes.vue";
+import InfoBoxes from "/src/components/InfoBoxes.vue";
 import WelcomeMessage from "/src/components/WelcomeMessage.vue";
 </script>
 <template>
-  <div class="WelcomeMessage">
-    <WelcomeMessage msg="Make a new account here!" />
     <WelcomeMessage
-      msg2="Enter a username and password you'll remember :)"
-      style="position: relative; left: 70px"
+        msg="Make a new account here!"
+        msg2="Enter a username and password you'll remember :)"
+        style="position: absolute; top: 200"
     />
-  </div>
-  <div class="NewAccountBoxes">
-    <NewAccountBoxes />
-  </div>
+    <div class="InfoBoxes">
+        <InfoBoxes redirect="Login" />
+    </div>
 </template>
 
 <style scoped>
-.WelcomeMessage {
-  position: relative;
-  top: 80px;
-}
-
-.NewAccountBoxes {
-  position: relative;
-  top: -40px;
+.InfoBoxes {
+    position: relative;
+    top: -40px;
 }
 </style>
