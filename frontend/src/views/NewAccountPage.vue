@@ -1,5 +1,5 @@
 <script setup>
-import InfoBoxes from "/src/components/InfoBoxes.vue";
+import NewAccountBox from "/src/components/NewAccountBox.vue";
 import WelcomeMessage from "/src/components/WelcomeMessage.vue";
 </script>
 <template>
@@ -8,13 +8,13 @@ import WelcomeMessage from "/src/components/WelcomeMessage.vue";
         msg2="Enter a username and password you'll remember :)"
         style="position: absolute; top: 200"
     />
-    <div class="InfoBoxes">
-        <InfoBoxes redirect="Login" />
+    <div class="NewAccountBox">
+        <NewAccountBox />
     </div>
 </template>
 
 <style scoped>
-.InfoBoxes {
+.NewAccountBox {
     position: relative;
     top: -40px;
 }
