@@ -9,9 +9,6 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/login", require("./routes/userRoutes.js"));
-app.use("/newaccount", require("./routes/userRoutes.js"));
+app.use("/", require("./routes/userRoutes.js"));
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
-
-console.log("working w express!");

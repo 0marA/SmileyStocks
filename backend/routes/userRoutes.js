@@ -3,10 +3,11 @@ const router = express.Router();
 const {
     addUsername,
     getUsername,
+    validateUser,
 } = require("../controllers/userController.js");
 
 router.get("/", getUsername);
-router.post("/adding", addUsername);
-// router.delete("/:id", deleteGoal);
+router.get("/login/validate", validateUser);
+router.post("/newaccount/adding", addUsername);
 
 module.exports = router;
