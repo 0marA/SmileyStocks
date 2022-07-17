@@ -20,21 +20,7 @@ const addUsername = asyncHandler(async (req, res) => {
     }
 });
 
-function validateUser(req, res) {
-    if (!req.body.username) {
-        res.status(400);
-        //throw new Error("Missing Username");
-        throw new Error("Missing Username");
-    }
-
-    User.findOne({ username: req.body.username }, (err, user) => {
-        if (user != null) return true;
-        else return false;
-    }).clone();
-}
-
 module.exports = {
     getUsername,
     addUsername,
-    validateUser,
 };

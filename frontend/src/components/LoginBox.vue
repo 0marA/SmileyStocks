@@ -1,29 +1,31 @@
 <template>
-    <form method="post" action="http://localhost:4000/login/validate"></form>
-    <input
-        class="textbox"
-        type="text"
-        id="USERNAME"
-        placeholder="Username"
-        style="position: absolute; top: -70px; left: 865px"
-    />
-
-    <div class="Buttons">
-        <button
-            id="REDIRECT_BUTTON"
-            class="buttons"
-            ref="btnToggle"
-            @click="$router.push('/newaccount')"
-        >
-            New Account
-        </button>
+    <form method="post" action="http://localhost:4000/login/validate">
         <input
-            class="buttons"
-            type="submit"
-            value="Submit"
-            style="position: absolute; left: 220px"
+            class="textbox"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+            style="position: absolute; top: -70px; left: 865px"
         />
-    </div>
+
+        <div class="Buttons">
+            <button
+                id="REDIRECT_BUTTON"
+                class="buttons"
+                ref="btnToggle"
+                @click="$router.push('/newaccount')"
+            >
+                New Account
+            </button>
+            <input
+                class="buttons"
+                type="submit"
+                value="Submit"
+                style="position: absolute; left: 220px"
+            />
+        </div>
+    </form>
 </template>
 
 <style scoped>

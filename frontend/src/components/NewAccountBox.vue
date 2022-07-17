@@ -3,7 +3,7 @@
         <input
             class="textbox"
             type="text"
-            id="USERNAME"
+            id="username"
             name="username"
             placeholder="Username"
             style="position: absolute; top: -70px; left: 865px"
