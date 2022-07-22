@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.js");
 
+let userID;
+
 const handleLogin = asyncHandler(async (req, res) => {
     if (!req.body.username) {
         res.status(400);
@@ -8,9 +10,14 @@ const handleLogin = asyncHandler(async (req, res) => {
     }
 
     User.findOne({ username: req.body.username }, (err, user) => {
-        if (user != null || user != undefined) res.json({ key: "User found" });
-        else res.json({ key: "user not found" });
+        if (user != null || user != undefined) {
+            userID = user.id;
+            res.json({ key: "User found " + userID });
+        } else res.json({ key: "user not found" });
     }).clone();
 });
 
-module.exports = handleLogin;
+module.exports = {
+    handleLogin,
+    userID,
+};

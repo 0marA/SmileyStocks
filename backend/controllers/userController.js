@@ -12,10 +12,7 @@ const addUsername = asyncHandler(async (req, res) => {
         throw new Error("Missing Username");
     }
     try {
-        const username = await User.create({
-            username: req.body.username,
-            symbols: ["APPL", "AMZN"],
-        });
+        const username = await User.create({ username: req.body.username });
         res.json({ username });
     } catch {
         throw new Error("Username already taken");

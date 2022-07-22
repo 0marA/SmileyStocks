@@ -5,11 +5,11 @@ const {
     addStock,
     updateStock,
     deleteStock,
-} = require("../controllers/userController.js");
+} = require("../controllers/stockController.js");
 
 router.get("/dashboard/getStocks", getStocks);
-router.post("/dashboard/addStock", addStock);
-router.post("/dashboard/updateStock", updateStock);
-router.post("/dashboard/deleteStock", deleteStock);
+router.put("/dashboard/addStock", addStock);
+router.put("/dashboard/updateStock", updateStock);
+router.delete("/dashboard/deleteStock", deleteStock);
 
 module.exports = router;

@@ -5,7 +5,7 @@ const {
     getUsername,
 } = require("../controllers/userController.js");
 
-const handleLogin = require("../scripts/handleLogin.js");
+const { handleLogin } = require("../scripts/handleLogin.js");
 
 router.get("/", getUsername);
 router.post("/login/validate", handleLogin);
