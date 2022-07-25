@@ -7,9 +7,9 @@ const {
     deleteStock,
 } = require("../controllers/stockController.js");
 
-router.get("/dashboard/getStocks", getStocks);
-router.put("/dashboard/addStock", addStock);
-router.put("/dashboard/updateStock", updateStock);
-router.delete("/dashboard/deleteStock", deleteStock);
+router.get("/getStocks", getStocks);
+router.post("/addStock", addStock);
+router.put("/updateStock", updateStock);
+router.delete("/deleteStock", deleteStock);
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.js");
 //const { userID } = require("../controllers/userController.js");
-let userID = "62daa8395f8fcd856adf634c";
+let userID = "62dd598903656d24db6b320a";
 
 const getStocks = asyncHandler(async (req, res) => {
     const stocks = await User.find();
@@ -10,32 +10,33 @@ const getStocks = asyncHandler(async (req, res) => {
 
 const addStock = asyncHandler(async (req, res) => {
     const user = await User.findById(userID);
+
     if (!user) {
         res.status(400);
-        throw new Error("User not found");
-    }
-
-    if (!req.body.symbols) {
+        throw new Error("No user");
+    } else if (!req.body.symbols) {
         res.status(400);
-        throw new Error("Missing a stock symbol");
+        throw new Error("No symbol");
+    } else if (!req.body.quantity) {
+        res.status(400);
+        throw new Error("No quantity");
     }
 
-    const addedStock = User.findByIdAndUpdate(
-        "62daa8395f8fcd856adf634c",
-        { $push: { symbols: [req.body.symbols] } },
-        {
-            new: true,
-        },
-        function (err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(result);
+    for (let i = 0; i < req.body.quantity; i++) {
+        User.findByIdAndUpdate(
+            userID,
+            { $push: { symbols: [req.body.symbols] } },
+            {
+                new: true,
+            },
+            (err, result) => {
+                if (err) {
+                    res.json(err);
+                }
+                console.log(result);
             }
-        }
-    );
-
-    //res.json(addedStock);
+        );
+    }
 });
 
 const updateStock = asyncHandler(async (req, res) => {
@@ -52,13 +53,14 @@ const updateStock = asyncHandler(async (req, res) => {
 });
 
 const deleteStock = asyncHandler(async (req, res) => {
+    const user = await User.findById(userID);
     if (!user) {
         res.status(400);
         throw new Error("User not found");
     }
 
-    const deletedGoal = await user.findByIdAndDelete(req.params.id, req.body);
-    res.json(deletedGoal);
+    const deletedStock = await User.findByIdAndDelete(req.params.id, req.body);
+    res.json(deletedStock);
 });
 
 module.exports = {
