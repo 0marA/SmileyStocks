@@ -1,22 +1,27 @@
-const finnhub = require("finnhub");
-const { API_KEY } = require(".././keys.js");
+import { ApiClient, DefaultApi } from "finnhub";
+import { API_KEY } from "../../keys.js";
 
-const api_key = finnhub.ApiClient.instance.authentications["api_key"];
+const api_key = ApiClient.instance.authentications["api_key"];
 api_key.apiKey = API_KEY;
-const finnhubClient = new finnhub.DefaultApi();
+const finnhubClient = new DefaultApi();
 
-var openPrice;
+// setTimeout(() => {
+//     getCurrentPrice("TSLA");
+// }, 500);
 
-const getOpen = (symb) => {
-    finnhubClient.quote(symb, (error, data, response) => {
-        openPrice = data.c;
-    });
-};
+// export async function getCurrentPrice(symb) {
+//     // finnhubClient.quote(symb, (error, data, response) => {
+//     //     let currentPrice = data.c;
+//     //     console.log("Current price " + currentPrice);
+//     //     return currentPrice;
+//     // });
+//     return "TSLA PRICE";
+// }
 
-getOpen("TSLA");
+// export let getCurrentPrice = async (data) => {
+//     return "price";
+// };
 
-setTimeout(() => {
-    console.log(openPrice);
-}, 500);
-
-module.exports = { getOpen };
+export function getCurrentPrice(symbol) {
+    return "price";
+}

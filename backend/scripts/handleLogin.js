@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/user.js");
 
-let userID;
+let userID = "O";
 
 const handleLogin = asyncHandler(async (req, res) => {
     if (!req.body.username) {
