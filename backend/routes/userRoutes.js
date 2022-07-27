@@ -1,14 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const {
-    addUsername,
-    getUsername,
-} = require("../controllers/userController.js");
+import express from "express";
+import { addUsername, getUsername } from "../controllers/userController.js";
+import { handleLogin } from "../scripts/handleLogin.js";
 
-const { handleLogin } = require("../scripts/handleLogin.js");
+const router = express.Router();
 
 router.get("/", getUsername);
 router.post("/login/validate", handleLogin);
 router.post("/newaccount/adding", addUsername);
 
-module.exports = router;
+export default router;

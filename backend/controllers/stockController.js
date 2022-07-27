@@ -1,5 +1,5 @@
-const asyncHandler = require("express-async-handler");
-const User = require("../models/user.js");
+import asyncHandler from "express-async-handler";
+import User from "../models/user.js";
 //const { userID } = require("../controllers/userController.js");
 let userID = "62dd598903656d24db6b320a";
 
@@ -63,9 +63,4 @@ const deleteStock = asyncHandler(async (req, res) => {
     res.json(deletedStock);
 });
 
-module.exports = {
-    getStocks,
-    addStock,
-    updateStock,
-    deleteStock,
-};
+export { getStocks, addStock, updateStock, deleteStock };

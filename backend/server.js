@@ -1,15 +1,18 @@
-const express = require("express");
-const connectDB = require("./scripts/connection.js");
+import express, { json, urlencoded } from "express";
+import connectDB from "./scripts/connection.js";
+import router from "./routes/userRoutes.js";
+import stockRoutes from "./routes/stockRoutes.js";
+
 const port = 4000;
 const app = express();
 
 connectDB();
 
 // Allows for parsing of json in terminal
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 
-app.use("/", require("./routes/userRoutes.js"));
-app.use("/dashboard", require("./routes/stockRoutes.js"));
+app.use("/", router);
+app.use("/dashboard", stockRoutes);
 
 app.listen(port, () => console.log(`Server started on ${port}!`));

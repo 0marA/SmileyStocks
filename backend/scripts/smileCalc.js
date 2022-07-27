@@ -1,16 +1,11 @@
-import { ApiClient, DefaultApi } from "finnhub";
 import { API_KEY } from "../../keys.js";
+import fetch from "node-fetch";
 
-const api_key = ApiClient.instance.authentications["api_key"];
-api_key.apiKey = API_KEY;
-const finnhubClient = new DefaultApi();
-
-let currentPrice;
-
-export function getCurrentPrice(symb) {
-    finnhubClient.quote(symb, (error, data, response) => {
-        currentPrice = data.c;
-        console.log("IN");
-    });
-    return currentPrice;
+export async function getCurrentPrice(symb) {
+    const stock = await (
+        await fetch(
+            `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`
+        )
+    ).json();
+    return stock.c;
 }

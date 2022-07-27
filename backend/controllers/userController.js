@@ -1,5 +1,5 @@
-const asyncHandler = require("express-async-handler");
-const User = require("../models/user.js");
+import asyncHandler from "express-async-handler";
+import User from "../models/user.js";
 
 const getUsername = asyncHandler(async (req, res) => {
     const user = await User.find();
@@ -19,7 +19,4 @@ const addUsername = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = {
-    getUsername,
-    addUsername,
-};
+export { getUsername, addUsername };

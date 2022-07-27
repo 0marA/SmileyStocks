@@ -10,6 +10,7 @@
         "type": "git",
         "url": "git+https://github.com/0marA/SmileyStocks.git"
     },
+    "type": "module",
     "keywords": [],
     "author": "",
     "license": "ISC",
@@ -21,6 +22,7 @@
         "@vue/cli": "^5.0.6",
         "express": "^4.18.1",
         "express-async-handler": "^1.2.0",
+        "fetch": "^1.1.0",
         "finnhub": "^1.2.14",
         "mongoose": "^6.4.0"
     }
