@@ -20,7 +20,14 @@
             class="buttons"
             type="submit"
             value="Submit"
-            style="position: fixed; left: 1008px"
+            style="position: fixed; left: 1009px"
         />
     </form>
+    <input
+        class="buttons"
+        type="submit"
+        value="See My Symbols"
+        formaction="http://localhost:4000/dashboard/getstocks"
+        style="position: fixed; left: 873px"
+    />
 </template>

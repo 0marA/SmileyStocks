@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { MONGO_URI } = require("../keys.js");
+const MONGO_URI = require("../keys.cjs");
 
 const connectDB = async () => {
     try {

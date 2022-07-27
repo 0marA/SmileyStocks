@@ -9,5 +9,5 @@ export default {
 </script>
 
 <template>
-    <h1>TSLA Open: {{ getCurrentPrice() }}</h1>
+    <h1>TSLA Open: {{ getCurrentPrice("TSLA") }}</h1>
 </template>

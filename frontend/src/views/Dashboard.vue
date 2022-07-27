@@ -1,5 +1,5 @@
 <script setup>
-import AddSymbols from "/src/components/AddSymbols.vue";
+import ManageSymbols from "/src/components/ManageSymbols.vue";
 import Smiles from "../components/Smiles.vue";
 </script>
 
@@ -7,5 +7,6 @@ import Smiles from "../components/Smiles.vue";
     <h1 style="position: relative top: 100px; color: rgb(19, 83, 19)">
         Welcome to your dashboard!
     </h1>
+    <ManageSymbols />
     <Smiles />
 </template>

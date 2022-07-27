@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB = require("./connection.js");
+const connectDB = require("./scripts/connection.js");
 const port = 4000;
 const app = express();
 
