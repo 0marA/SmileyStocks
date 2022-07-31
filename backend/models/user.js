@@ -7,10 +7,7 @@ const user = mongoose.Schema(
             required: true,
             unique: true,
         },
-        symbols: {
-            type: [String],
-            required: false,
-        },
+        stocks: [],
     },
     { timestamps: true }
 );

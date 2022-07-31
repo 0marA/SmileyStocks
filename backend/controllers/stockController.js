@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
 //const { userID } = require("../controllers/userController.js");
-let userID = "62dd598903656d24db6b320a";
+let userID = "62e6064d65caaa36376a0ca2";
 
 const getStocks = asyncHandler(async (req, res) => {
     const stocks = await User.find();
@@ -14,18 +14,20 @@ const addStock = asyncHandler(async (req, res) => {
     if (!user) {
         res.status(400);
         throw new Error("No user");
-    } else if (!req.body.symbols) {
+    } else if (!req.body.symbol) {
         res.status(400);
         throw new Error("No symbol");
     } else if (!req.body.quantity) {
         res.status(400);
         throw new Error("No quantity");
+    } else if (!req.body.btprice) {
+        res.status(400);
+        throw new Error("No btprice");
     }
-
     for (let i = 0; i < req.body.quantity; i++) {
         User.findByIdAndUpdate(
             userID,
-            { $push: { symbols: [req.body.symbols] } },
+            { $push: { stocks: { [req.body.symbol]: req.body.btprice } } },
             {
                 new: true,
             },
@@ -38,7 +40,6 @@ const addStock = asyncHandler(async (req, res) => {
         );
     }
 });
-
 const updateStock = asyncHandler(async (req, res) => {
     const user = await User.findById(userID);
     if (!user) {
