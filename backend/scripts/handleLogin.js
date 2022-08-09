@@ -3,7 +3,7 @@ import User from "../models/user.js";
 
 let userID = "O";
 
-const handleLogin = asyncHandler(async (req, res) => {
+const handleLogin = asyncHandler(async () => {
     if (!req.body.username) {
         res.status(400);
         throw new Error("Missing Username");
@@ -12,7 +12,7 @@ const handleLogin = asyncHandler(async (req, res) => {
     User.findOne({ username: req.body.username }, (err, user) => {
         if (user != null || user != undefined) {
             userID = user.id;
-            res.redirect({ key: "User found " + userID });
+            res.json({ key: "User found " + userID });
         } else res.json({ key: "user not found" });
     }).clone();
 });
