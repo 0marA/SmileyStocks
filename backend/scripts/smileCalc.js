@@ -7,14 +7,14 @@ let userID = "62e6d96a51186be0ad2864f9";
 let currentPrice;
 let userStocks;
 
-async function getCurrentPrice(symb) {
+export async function getCurrentPrice(symb) {
     await axios
         .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`)
         .then((response) => (currentPrice = response.data.c));
     return currentPrice;
 }
 
-async function getUserStocks(req, res) {
+async function getUserStocks(request, response) {
     // await User.findOne({ _id: userID }, (err, user) => {
     //     if (user != null || user != undefined) {
     //         userStocks = user.stocks;
@@ -22,15 +22,24 @@ async function getUserStocks(req, res) {
     //     } else console.log({ key: "user not found" });
     // }).clone();
 
-    return await axios({
-        method: "get",
-        url: "http://localhost:4000/api/dashboard/getstocks",
+    // return await axios({
+    //     method: "get",
+    //     url: "http://localhost:4000/api/dashboard/getstocks",
+    // });
+
+    const res = await axios.get("/api/dashboard/getstocks", {
+        params: { req: request },
     });
 
-
+    console.log("Get User Stocks: " + res.data.args); // { answer: 42 }
+    return res.data.args;
 }
 
 export async function getSmiles() {
-    await getUserStocks();
-    
+    //await getUserStocks();
+    //return ":)";
+    const res = await axios.get("/api/dashboard/getstocks").then((response) => (console.log(response)));
+
+    console.log("Get User Stocks: " + userStocks); // { answer: 42 }
+    return userStocks;
 }

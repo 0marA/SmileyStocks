@@ -4,20 +4,21 @@ import { getSmiles } from "../../../backend/scripts/smileCalc.js";
 export default {
     data() {
         return {
-            user: undefined,
+            smiles: undefined,
         };
     },
     async mounted() {
-        this.user = await this.fetchUser();
+        this.smiles = await this.fetchSmiles();
     },
     methods: {
-        async fetchUser() {
+        async fetchSmiles() {
             return await getSmiles();
+
         },
     },
 };
 </script>
 
 <template>
-    <h1>{{ user }}</h1>
+    <h1>{{ smiles }}</h1>
 </template>
