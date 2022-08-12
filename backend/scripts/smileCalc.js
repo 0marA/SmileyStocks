@@ -31,15 +31,13 @@ async function getUserStocks(request, response) {
         params: { req: request },
     });
 
-    console.log("Get User Stocks: " + res.data.args); // { answer: 42 }
+    console.log("Get User Stocks: " + res.data.args);
     return res.data.args;
 }
 
 export async function getSmiles() {
     //await getUserStocks();
-    //return ":)";
-    const res = await axios.get("/api/dashboard/getstocks").then((response) => (console.log(response)));
-
-    console.log("Get User Stocks: " + userStocks); // { answer: 42 }
-    return userStocks;
+    const res = await axios.get("/api/dashboard/getstocks");
+    console.log(res.data[0].stocks);
+    return res.data[0].stocks;
 }

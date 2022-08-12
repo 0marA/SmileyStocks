@@ -17,10 +17,18 @@
             style="position: absolute; top: 30px; left: 865px"
         />
         <input
+            class="textbox"
+            type="text"
+            id="btprice"
+            name="btprice"
+            placeholder="Bought price?"
+            style="position: absolute; top: 60px; left: 865px"
+        />
+        <input
             class="buttons"
             type="submit"
             value="Submit"
-            style="position: fixed; left: 1009px"
+            style="position: relative; top: 30px; left: 1000px"
         />
     </form>
     <input
@@ -28,6 +36,6 @@
         type="submit"
         value="See My Symbols"
         formaction="http://localhost:4000/dashboard/getstocks"
-        style="position: fixed; left: 873px"
+        style="position: relative; top: 8px; left: 865px"
     />
 </template>

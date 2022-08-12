@@ -13,7 +13,6 @@ export default {
     methods: {
         async fetchSmiles() {
             return await getSmiles();
-
         },
     },
 };

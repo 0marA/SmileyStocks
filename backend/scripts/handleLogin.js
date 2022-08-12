@@ -3,7 +3,7 @@ import User from "../models/user.js";
 
 let userID = "O";
 
-const handleLogin = asyncHandler(async () => {
+const handleLogin = asyncHandler(async (req, res) => {
     if (!req.body.username) {
         res.status(400);
         throw new Error("Missing Username");
