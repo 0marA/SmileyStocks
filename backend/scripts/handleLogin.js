@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
 
-let userID = "O";
+let userID = "";
 
 const handleLogin = asyncHandler(async (req, res) => {
     if (!req.body.username) {
@@ -12,8 +12,10 @@ const handleLogin = asyncHandler(async (req, res) => {
     User.findOne({ username: req.body.username }, (err, user) => {
         if (user != null || user != undefined) {
             userID = user.id;
-            res.json({ key: "User found " + userID });
-        } else res.json({ key: "user not found" });
+            res.redirect("http://localhost:3000/dashboard");
+        } else {
+            res.redirect("http://localhost:3000/");
+        }
     }).clone();
 });
 

@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
 //const { userID } = require("../controllers/userController.js");
-let userID = "62f5b7d824b8a815bca48e6b";
+let userID = "62f91988ff839f68f0aadb44";
 
 const getStocks = asyncHandler(async (req, res) => {
     const stocks = await User.find();

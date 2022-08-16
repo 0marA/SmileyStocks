@@ -12,10 +12,10 @@ const addUsername = asyncHandler(async (req, res) => {
         throw new Error("Missing Username");
     }
     try {
-        const username = await User.create({ username: req.body.username });
-        res.json({ username });
+        await User.create({ username: req.body.username });
+        res.redirect("http://localhost:3000/dashboard");
     } catch {
-        throw new Error("Username already taken");
+        res.redirect("http://localhost:3000/");
     }
 });
 
