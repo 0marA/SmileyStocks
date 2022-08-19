@@ -1,3 +1,28 @@
+<script>
+import { seeMySymbols } from "../../../backend/scripts/smileCalc.js";
+
+export default {
+    data() {
+        return {
+            symbols: undefined,
+        };
+    },
+    async mounted() {
+        this.symbols = await this.fetchMySymbols();
+    },
+    methods: {
+        async fetchMySymbols() {
+            let userSymbolsID = document.getElementById("userSymbols");
+            if (userSymbolsID.style.display === "none") {
+                userSymbolsID.style.display = "block";
+            } else {
+                userSymbolsID.style.display = "none";
+            }
+            return await seeMySymbols();
+        },
+    },
+};
+</script>
 <template>
     <form method="post" action="http://localhost:4000/api/dashboard/addstock">
         <input
@@ -35,7 +60,8 @@
         class="buttons"
         type="submit"
         value="See My Symbols"
-        formaction="http://localhost:4000/dashboard/getstocks"
+        @click="fetchMySymbols()"
         style="position: relative; top: 8px; left: 865px"
     />
+    <h1 id="userSymbols">{{ symbols }}</h1>
 </template>

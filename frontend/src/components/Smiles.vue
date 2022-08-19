@@ -18,6 +18,4 @@ export default {
 };
 </script>
 
-<template>
-    <h1>{{ smiles }}</h1>
-</template>
+<template></template>

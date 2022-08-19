@@ -41,3 +41,10 @@ export async function getSmiles() {
     //console.log(res.data.stocks);
     return res.data.stocks;
 }
+
+export async function seeMySymbols() {
+    //await getUserStocks();
+    const res = await axios.get("/api/dashboard/getstocks");
+    //console.log(res.data.stocks);
+    return res.data.stocks;
+}
