@@ -42,6 +42,7 @@ const addStock = asyncHandler(async (req, res) => {
             }
         );
     }
+    res.redirect("http://localhost:3000/dashboard");
 });
 
 const updateStock = asyncHandler(async (req, res) => {
