@@ -5,7 +5,8 @@ import User from "../models/user.js";
 let userID = "62e6d96a51186be0ad2864f9";
 
 let currentPrice;
-let userStocks;
+let stocks = [];
+let stockBoughtPrices = [];
 
 export async function getCurrentPrice(symb) {
     await axios
@@ -14,37 +15,27 @@ export async function getCurrentPrice(symb) {
     return currentPrice;
 }
 
-async function getUserStocks(request, response) {
-    // await User.findOne({ _id: userID }, (err, user) => {
-    //     if (user != null || user != undefined) {
-    //         userStocks = user.stocks;
-    //         res.json({ key: "User found " + userID });
-    //     } else console.log({ key: "user not found" });
-    // }).clone();
-
-    // return await axios({
-    //     method: "get",
-    //     url: "http://localhost:4000/api/dashboard/getstocks",
-    // });
-
-    const res = await axios.get("/api/dashboard/getstocks", {
-        params: { req: request },
-    });
-
-    console.log("Get User Stocks: " + res.data.args);
-    return res.data.args;
-}
-
 export async function getSmiles() {
-    //await getUserStocks();
     const res = await axios.get("/api/dashboard/getstocks");
-    //console.log(res.data.stocks);
+    for (let x = 0; x < res.data.stocks.length; x++) {
+        //stocks.push(res.data.stocks[x]);
+    }
     return res.data.stocks;
 }
 
 export async function seeMySymbols() {
-    //await getUserStocks();
+    await getUserStocks();
+    return stocks;
+}
+
+async function getUserStocks() {
+    // Returns a JSON of all the stuff in a users schema
     const res = await axios.get("/api/dashboard/getstocks");
-    //console.log(res.data.stocks);
-    return res.data.stocks;
+
+    for (let x = 0; x < res.data.stocks.length; x++) {
+        let stock = res.data.stocks[x];
+        stocks.push(Object.keys(stock));
+        stocks[x] = stocks[x].toString(); // Gets rid of the []s in the array
+        stockBoughtPrices.push(Object.values(res.data.stocks[x]));
+    }
 }
