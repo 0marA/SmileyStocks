@@ -38,6 +38,6 @@ async function getUserStocks(request, response) {
 export async function getSmiles() {
     //await getUserStocks();
     const res = await axios.get("/api/dashboard/getstocks");
-    console.log(res.data[0].stocks);
-    return res.data[0].stocks;
+    //console.log(res.data.stocks);
+    return res.data.stocks;
 }

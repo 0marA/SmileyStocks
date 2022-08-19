@@ -1,15 +1,16 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
-//const { userID } = require("../controllers/userController.js");
-let userID = "62f91988ff839f68f0aadb44";
+import { getUserID } from "../scripts/handleLogin.js";
+//let userID = "62f91988ff839f68f0aadb44";
 
 const getStocks = asyncHandler(async (req, res) => {
-    const stocks = await User.find();
+    const stocks = await User.findById(getUserID());
     res.send(stocks);
 });
 
 const addStock = asyncHandler(async (req, res) => {
-    const user = await User.findById(userID);
+    const user = await User.findById(getUserID());
+    console.log(user);
 
     if (!user) {
         res.status(400);
@@ -28,7 +29,7 @@ const addStock = asyncHandler(async (req, res) => {
     console.log("symbols: " + req.body.symbol);
     for (let i = 0; i < req.body.quantity; i++) {
         User.findByIdAndUpdate(
-            userID,
+            getUserID(),
             { $push: { stocks: { [req.body.symbols]: req.body.btprice } } },
             {
                 new: true,
@@ -44,20 +45,24 @@ const addStock = asyncHandler(async (req, res) => {
 });
 
 const updateStock = asyncHandler(async (req, res) => {
-    const user = await User.findById(userID);
+    const user = await User.findById(getUserID());
     if (!user) {
         res.status(400);
         throw new Error("User not found");
     }
 
-    const updatedStock = await User.findByIdAndUpdate(userID, req.body.symbol, {
-        new: true,
-    });
+    const updatedStock = await User.findByIdAndUpdate(
+        getUserID(),
+        req.body.symbol,
+        {
+            new: true,
+        }
+    );
     res.json(updatedStock);
 });
 
 const deleteStock = asyncHandler(async (req, res) => {
-    const user = await User.findById(userID);
+    const user = await User.findById(getUserID());
     if (!user) {
         res.status(400);
         throw new Error("User not found");
