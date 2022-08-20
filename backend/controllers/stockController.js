@@ -4,8 +4,8 @@ import { getUserID } from "../scripts/handleLogin.js";
 //let userID = "62f91988ff839f68f0aadb44";
 
 const getStocks = asyncHandler(async (req, res) => {
-    const stocks = await User.findById(getUserID());
-    res.send(stocks);
+    const userSchema = await User.findById(getUserID());
+    res.send(userSchema);
 });
 
 const addStock = asyncHandler(async (req, res) => {
