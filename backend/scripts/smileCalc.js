@@ -19,39 +19,39 @@ export async function getSmiles() {
     let userDataArray = Array.from([...userData.userStocksMap.entries()]); // This way we can peak at the next symbol in the array
     userDataArray.sort();
 
+    // Gets the current price for all of the symbols the user has
     for (let x = 0; x < userDataArray.length; x++) {
-        if (userDataArray[x] != userDataArray[x + 1]) {
-            // No need to make multiple API calls if the symbol is the same
+        console.log("Array " + userDataArray[x][0][0]);
+        if (userDataArray[x][0][0] != userDataArray[x + 1][0][0]) {
+            // No need to make multiple API calls if the next symbol is the same
             if (symbolsQueried.has(userDataArray[x][0][0])) {
                 // If the symbol has already been queried, then just get the price from the array
-                currentPrice = symbolsQueried.get(userDataArray[x][1][1]);
-                console.log(
-                    "Already found" +
-                        userDataArray[x][0] +
-                        " so not requerying " +
-                        x
-                );
+                currentPrice = symbolsQueried.get(userDataArray[x][1]);
             } else {
                 // If the symbol has not been queried, then query the API and add it to the map
-                currentPrice = await getCurrentPrice(userDataArray[x][1]);
+                currentPrice = await getCurrentPrice(userDataArray[x][0]);
                 symbolsQueried.set(userDataArray[x][0][0], currentPrice);
-                console.log("not queried before" + userDataArray[x][0][0] + x);
             }
+        } else {
+            console.log("Not Unique" + x);
         }
 
-        // console.log(currentPrice);
-        // let smile = currentPrice - stockBoughtPrices[x];
+        console.log("BT Price: " + userDataArray[x][1]);
+        console.log("Current Price: " + currentPrice);
+        //let smile = currentPrice - userDataArray[x][0][1];
         // smiles.push(smile);
     }
 
-    let symbolsQueriedArray = Array.from([...symbolsQueried.entries()]);
-    //console.log(symbolsQueriedArray);
-    return "Smiles: " + symbolsQueriedArray;
+    return "Smiles: " + ":)";
 }
 
 export async function seeMySymbols() {
     let userData = await getUserStocks();
-    return userData.stocks;
+    let userDataArray = Array.from([...userData.userStocksMap.entries()]);
+    let userSymbols = [];
+
+    for (let i = 0; i <userDataArray.length; i++) userSymbols.push(userDataArray[i][0][0]);
+    return userSymbols;
 }
 
 async function getUserStocks() {
