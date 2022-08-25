@@ -2,7 +2,8 @@ import { API_KEY } from "../../keys.js";
 import axios from "axios";
 
 let currentPrice;
-let sybmolsQueried = new Map(); // Every time a price is queried, it'll be added here so that if there are symbols in non sequential order, there won't be a need to re-query the API
+let symbolsQueried = new Map(); // Every time a price is queried, it'll be added here along with its price so that if there are
+// symbols in non sequential order, there won't be a need to re-query the API and the price will be sorted with the symbol
 
 export async function getCurrentPrice(symb) {
     // await axios
@@ -21,14 +22,20 @@ export async function getSmiles() {
     for (let x = 0; x < userDataArray.length; x++) {
         if (userDataArray[x] != userDataArray[x + 1]) {
             // No need to make multiple API calls if the symbol is the same
-            if (sybmolsQueried.has(userDataArray[x])) {
+            if (symbolsQueried.has(userDataArray[x][0][0])) {
                 // If the symbol has already been queried, then just get the price from the array
-                currentPrice = sybmolsQueried.get(userDataArray[x]);
-                console.log("Already found so not requerying " + currentPrice);
+                currentPrice = symbolsQueried.get(userDataArray[x][1][1]);
+                console.log(
+                    "Already found" +
+                        userDataArray[x][0] +
+                        " so not requerying " +
+                        x
+                );
             } else {
                 // If the symbol has not been queried, then query the API and add it to the map
-                currentPrice = await getCurrentPrice(userDataArray[x][0]);
-                sybmolsQueried.set(userDataArray[x], currentPrice);
+                currentPrice = await getCurrentPrice(userDataArray[x][1]);
+                symbolsQueried.set(userDataArray[x][0][0], currentPrice);
+                console.log("not queried before" + userDataArray[x][0][0] + x);
             }
         }
 
@@ -36,9 +43,10 @@ export async function getSmiles() {
         // let smile = currentPrice - stockBoughtPrices[x];
         // smiles.push(smile);
     }
-    let symbolsQueriedArray = Array.from([...sybmolsQueried.entries()]);
-    console.log(symbolsQueriedArray);
-    return "Smiles: " + sybmolsQueried;
+
+    let symbolsQueriedArray = Array.from([...symbolsQueried.entries()]);
+    //console.log(symbolsQueriedArray);
+    return "Smiles: " + symbolsQueriedArray;
 }
 
 export async function seeMySymbols() {
