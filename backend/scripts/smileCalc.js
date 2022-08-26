@@ -2,13 +2,6 @@ import axios from 'axios';
 
 import {API_KEY} from '../../keys.js';
 
-let currentPrice;
-let symbolsQueried =
-    new Map();  // Every time a price is queried, it'll be added here along with
-                // its price so that if there are
-// symbols in non sequential order, there won't be a need to re-query the API
-// and the price will be sorted with the symbol
-
 export async function getCurrentPrice(symb) {
   // await axios
   //     .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`)
@@ -20,38 +13,45 @@ export async function getCurrentPrice(symb) {
 export async function getSmiles() {
   let userData = await getUserStocks();
   let userDataArray = userData.userDataArray;
+  let currentPrice;
+  let symbolsQueried =
+      new Map();  // Every time a price is queried, it'll be added here along
+                  // with its price so that if there are symbols in non
+                  // sequential order, there won't be a need to re-query the
+                  // APIand the price will be sorted with the symbol
   let smiles = [];
 
   // Gets the current price for all of the symbols the user has
   for (let x = 0; x < userDataArray.length; x++) {
-    if (x == userDataArray.length - 1)
-      break;  // You're the last element so don't check the next one :)
+    let symbol = userDataArray[x][0].toString();
+    let price = userDataArray[x][1];
 
-    if (userDataArray[x][0][0] != userDataArray[x + 1][0][0]) {
-      // No need to make multiple API calls if the next symbol is the same
-      if (symbolsQueried.has(userDataArray[x][0][0])) {
-        // If the symbol has already been queried, then just get the price from
-        // the array
-        console.log("Already queried" + x);
-        currentPrice = symbolsQueried.get(userDataArray[x][1]);
-      } else {
-        // If the symbol has not been queried, then query the API and add it the map
-        currentPrice = await getCurrentPrice(userDataArray[x][0]);
-        symbolsQueried.set(userDataArray[x][0][0], currentPrice);
-      }
+
+    if (symbolsQueried.has(symbol)) {
+      // If the symbol has already been queried, then just get the price from
+      // the array
+      console.log('Already queried' + x);
+      currentPrice = symbolsQueried.get(symbol);
     } else {
-      console.log('Not Unique' + x);
+      // If the symbol has not been queried, then query the API and add it the
+      // map
+      currentPrice = await getCurrentPrice(symbol);
+      symbolsQueried.set(symbol, 100);
     }
-
-    console.log('BT Price: ' + userDataArray[x][1]);
-    console.log('Current Price: ' + currentPrice);
-    // //let smile = currentPrice - userDataArray[x][0][1];
-    // // smiles.push(smile);
   }
+  // console.log('BT Price of: ' + symbol + price);
+  // console.log('Current Price: ' + currentPrice);
+
+
+
+  // //let smile = currentPrice - userDataArray[x][0][1];
+  // // smiles.push(smile);
 
   return 'Smiles: ' +
       ':)';
 }
+
+
 
 export async function seeMySymbols() {
   let userData = await getUserStocks();
@@ -87,7 +87,7 @@ async function getUserStocks() {
 
   let userDataArray = Array.from([
     ...userStocksMap.entries()
-  ]);  // This way we can peak at the next symbol in the array
+  ]);  // This way we can sort the symbols and the prices won't get messed up
   userDataArray.sort();
 
   return {userDataArray};
