@@ -2,6 +2,7 @@ import express, { json, urlencoded } from "express";
 import connectDB from "./scripts/connection.js";
 import userRoutes from "./routes/userRoutes.js";
 import stockRoutes from "./routes/stockRoutes.js";
+import { getUserID } from "./scripts/handleLogin.js";
 import cors from "cors";
 
 const port = 4000;
