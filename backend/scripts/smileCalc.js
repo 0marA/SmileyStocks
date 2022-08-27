@@ -24,7 +24,7 @@ export async function getSmiles() {
   // Gets the current price for all of the symbols the user has
   for (let x = 0; x < userDataArray.length; x++) {
     let symbol = userDataArray[x][0].toString();
-    let price = userDataArray[x][1];
+    let btPrice = userDataArray[x][1];
 
 
     if (symbolsQueried.has(symbol)) {
@@ -36,19 +36,20 @@ export async function getSmiles() {
       // If the symbol has not been queried, then query the API and add it the
       // map
       currentPrice = await getCurrentPrice(symbol);
-      symbolsQueried.set(symbol, 100);
+      symbolsQueried.set(symbol, currentPrice);
     }
+
+
+    let smile;
+    let deltaPrice = currentPrice - btPrice;
+    if (deltaPrice > 0)
+      smiles.push(')')
+      else if (deltaPrice < 0) smiles.push('(')
   }
-  // console.log('BT Price of: ' + symbol + price);
-  // console.log('Current Price: ' + currentPrice);
 
 
-
-  // //let smile = currentPrice - userDataArray[x][0][1];
-  // // smiles.push(smile);
-
-  return 'Smiles: ' +
-      ':)';
+  return 'Smiles: :' + smiles.join('');
+  ;
 }
 
 
@@ -58,8 +59,11 @@ export async function seeMySymbols() {
   let userDataArray = userData.userDataArray;
   let userSymbols = [];
 
-  for (let i = 0; i < userDataArray.length; i++)
-    userSymbols.push(userDataArray[i][0][0]);
+  for (let i = 0; i < userDataArray.length; i++) {
+    let symbolName = userDataArray[i][0];
+    let price = userDataArray[i][1];
+    userSymbols.push(symbolName + ' BT: ' + price)
+  }
   return userSymbols;
 }
 
