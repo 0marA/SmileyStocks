@@ -9,7 +9,7 @@
   "dependencies": {
     "@vueuse/core": "^9.0.0",
     "finnhub": "^1.2.14",
-    "vue": "^3.2.37",
+    "vue": "^3.2.38",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {

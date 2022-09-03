@@ -1,12 +1,13 @@
 import axios from "axios";
 import { API_KEY } from "../../keys.js";
+let smileWorth = 1;
+let currentPrice
 
 export async function getCurrentPrice(symb) {
-    // await axios
-    //     .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`)
-    //     .then((response) => (currentPrice = response.data.c));
-    // return currentPrice;
-    return 30;
+    await axios
+        .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`)
+        .then((response) => (currentPrice = response.data.c));
+    return currentPrice;
 }
 
 export async function getSmiles() {
@@ -37,7 +38,7 @@ export async function getSmiles() {
 
         let smile;
         let deltaPrice = currentPrice - btPrice;
-        for (let i = 0; i < Math.abs(deltaPrice); i++) {
+        for (let i = 0; i < (Math.abs(deltaPrice) / smileWorth); i++) {
           if (deltaPrice > 0) {
             if (smiles[smiles.length - 1] == "(") smiles.pop();
             else smiles.push(")");
