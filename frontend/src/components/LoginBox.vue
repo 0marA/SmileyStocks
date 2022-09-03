@@ -1,5 +1,5 @@
 <template>
-    <form method="post" action="http://localhost:4000/api/login/validate">
+    <form method="post" action="/api/login/validate">
         <input
             class="textbox"
             type="text"

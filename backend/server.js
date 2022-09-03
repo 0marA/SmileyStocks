@@ -5,16 +5,16 @@ import stockRoutes from "./routes/stockRoutes.js";
 import { getUserID } from "./scripts/handleLogin.js";
 import cors from "cors";
 
-const port = 4000;
+// const port = 4000;
 const app = express();
 
 connectDB();
 
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-    })
-);
+// app.use(
+//     cors({
+//         origin: "/",
+//     })
+// );
 // Allows for parsing of json in terminal
 app.use(json());
 app.use(urlencoded({ extended: false }));
