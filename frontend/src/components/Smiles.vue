@@ -19,5 +19,5 @@ export default {
 </script>
 
 <template>
-    <h1>{{ smiles }}</h1>
+    <h1 style = "position: absolute; top: 200px;">{{ smiles }}</h1>
 </template>

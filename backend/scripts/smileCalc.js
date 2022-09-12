@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_KEY } from "../../keys.js";
 let smileWorth = 1;
-let currentPrice
+let currentPrice;
 
 export async function getCurrentPrice(symb) {
     await axios
@@ -17,7 +17,7 @@ export async function getSmiles() {
     let symbolsQueried = new Map(); // Every time a price is queried, it'll be added here along
     // with its price so that if there are symbols in non
     // sequential order, there won't be a need to re-query the
-    // APIand the price will be sorted with the symbol
+    // API and the price will be sorted with the symbol
     let smiles = [];
 
     // Gets the current price for all of the symbols the user has
@@ -26,27 +26,24 @@ export async function getSmiles() {
         let btPrice = userDataArray[x][1];
 
         if (symbolsQueried.has(symbol)) {
-            // If the symbol has already been queried, then just get the price from
-            // the array
+            // If the symbol has already been queried, then just get the price from the array
             currentPrice = symbolsQueried.get(symbol);
         } else {
-            // If the symbol has not been queried, then query the API and add it the
-            // map
+            // If the symbol has not been queried, then query the API and add it the map
             currentPrice = await getCurrentPrice(symbol);
             symbolsQueried.set(symbol, currentPrice);
         }
 
         let smile;
         let deltaPrice = currentPrice - btPrice;
-        for (let i = 0; i < (Math.abs(deltaPrice) / smileWorth); i++) {
-          if (deltaPrice > 0) {
-            if (smiles[smiles.length - 1] == "(") smiles.pop();
-            else smiles.push(")");
-        } else if (deltaPrice < 0)
-            if (smiles[smiles.length - 1] == ")") smiles.pop();
-            else smiles.push("(");
+        for (let i = 0; i < Math.abs(deltaPrice) / smileWorth; i++) {
+            if (deltaPrice > 0) {
+                if (smiles[smiles.length - 1] == "(") smiles.pop();
+                else smiles.push(")");
+            } else if (deltaPrice < 0)
+                if (smiles[smiles.length - 1] == ")") smiles.pop();
+                else smiles.push("(");
         }
-
     }
 
     return "Smiles: :" + smiles.join("");
@@ -68,8 +65,7 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await axios.get("/api/dashboard/getstocks"); // Returns a JSON of all the
-    // stuff in a users schema
+    const res = await axios.get("/api/dashboard/getstocks"); // Returns a JSON of all the stuff in a users schema
 
     try {
         // If the user has no symbols then just return

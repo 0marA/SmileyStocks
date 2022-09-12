@@ -15,18 +15,8 @@ const addStock = asyncHandler(async (req, res) => {
     if (!user) {
         res.status(400);
         throw new Error("No user");
-    } else if (!req.body.symbols) {
-        res.status(400);
-        throw new Error("No symbol");
-    } else if (!req.body.quantity) {
-        res.status(400);
-        throw new Error("No quantity");
-    } else if (!req.body.btprice) {
-        res.status(400);
-        throw new Error("No btprice");
     }
 
-    console.log("symbols: " + req.body.symbol);
     for (let i = 0; i < req.body.quantity; i++) {
         User.findByIdAndUpdate(
             getUserID(),
@@ -38,7 +28,6 @@ const addStock = asyncHandler(async (req, res) => {
                 if (err) {
                     res.json(err);
                 }
-                console.log(result);
             }
         );
     }
