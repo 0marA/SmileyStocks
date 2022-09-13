@@ -53,13 +53,21 @@ export async function seeMySymbols() {
     let userData = await getUserStocks();
     let userDataArray = userData.userDataArray;
     let userSymbols = [];
+    let uniqueSymbols = [];
 
     for (let i = 0; i < userDataArray.length; i++) {
         let symbolName = userDataArray[i][0];
         let price = userDataArray[i][1];
         userSymbols.push(symbolName + " BT: " + price);
     }
-    return userSymbols;
+    let j = 0;
+    for (let i = 0; i < userSymbols.length; i++) {
+        if (userSymbols[i] == userSymbols[i + 1]) {
+            uniqueSymbols.push(userSymbols[i]);
+        }
+    }
+    console.log(uniqueSymbols);
+    return uniqueSymbols;
 }
 
 async function getUserStocks() {
