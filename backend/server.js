@@ -16,8 +16,8 @@ app.use(urlencoded({ extended: false }));
 app.use("/api/", userRoutes);
 app.use("/api/dashboard", stockRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-    express.use(express.static(path.join(__dirname, '/frontend/dist')))
+if (process.env.NODE_ENV === "production") {
+    express.use(express.static(__dirname, +"/frontend/dist"));
 }
 
 app.listen(port, () => console.log(`Server started on ${port}!`));
