@@ -19,7 +19,7 @@ export default {
                 const username = await axios.get("/api/");
                 return username.data;
             } catch (error) {
-                window.location.href = "http://localhost:3000";
+                window.location.href = "/";
             }
          
         },

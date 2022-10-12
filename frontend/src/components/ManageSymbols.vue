@@ -40,7 +40,7 @@ export default {
 };
 </script>
 <template>
-    <form method="post" action="http://localhost:4000/api/dashboard/addstock">
+    <form method="post" action="api/dashboard/addstock">
         <input
             class="textbox"
             type="text"
