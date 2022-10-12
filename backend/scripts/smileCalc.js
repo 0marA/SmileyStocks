@@ -58,15 +58,25 @@ export async function seeMySymbols() {
     for (let i = 0; i < userDataArray.length; i++) {
         let symbolName = userDataArray[i][0];
         let price = userDataArray[i][1];
-        userSymbols.push(symbolName + " BT: " + price);
+        userSymbols.push(symbolName + " BT @ $ " + price);
     }
-    let j = 0;
+
     for (let i = 0; i < userSymbols.length; i++) {
-        if (userSymbols[i] == userSymbols[i + 1]) {
+        if (userSymbols[i] !== userSymbols[i + 1]) {
             uniqueSymbols.push(userSymbols[i]);
         }
     }
-    console.log(uniqueSymbols);
+
+    for (let i = 0; i < uniqueSymbols.length; i++) {
+        let numOfSymbs = 0;
+        for (let j = 0; j < userSymbols.length; j++) {
+            if (uniqueSymbols[i] === userSymbols[j]) {
+                numOfSymbs++;
+            }
+        }
+        uniqueSymbols[i] += " x " + numOfSymbs;
+    }
+
     return uniqueSymbols;
 }
 

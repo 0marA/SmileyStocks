@@ -1,14 +1,17 @@
 <script>
 import { seeMySymbols } from "../../../backend/scripts/smileCalc.js";
+import axios from "axios";
 
 export default {
     data() {
         return {
             symbols: undefined,
+            delete: undefined,
         };
     },
     async mounted() {
         this.symbols = await this.fetchMySymbols();
+        this.delete = await this.asyncDeleteSymbols();
     },
     methods: {
         async fetchMySymbols() {
@@ -19,6 +22,19 @@ export default {
                 userSymbolsID.style.display = "none";
             }
             return await seeMySymbols();
+        },
+
+        async asyncDeleteSymbols() {
+            let symbol = document.getElementById("symbols").value;
+            let quantity = document.getElementById("quantity").value;
+            await axios.delete("/api/dashboard/deleteStock", {
+                // symbol: { symbol },
+                // quantity: { quantity },
+                data: {
+                    symbol: "TSLA",
+                    quantity: 2,
+                },
+            });
         },
     },
 };
@@ -52,7 +68,7 @@ export default {
         <input
             class="buttons"
             type="submit"
-            value="Submit"
+            value="Add"
             style="position: absolute; top: 105px; left: 750px"
         />
     </form>
@@ -61,9 +77,18 @@ export default {
         type="submit"
         value="See My Symbols"
         @click="fetchMySymbols()"
+        style="position: absolute; top: 80px; left: 905px"
+    />
+    <input
+        class="buttons"
+        type="submit"
+        value="Delete"
+        @click="deleteSymbols()"
         style="position: absolute; top: 80px; left: 750px"
     />
-    <h1 id="userSymbols" style="position: absolute; top: 130px;">{{ symbols }}</h1>
+    <h1 id="userSymbols" style="position: absolute; top: 130px">
+        {{ symbols }}
+    </h1>
 </template>
 
 <style scoped>
