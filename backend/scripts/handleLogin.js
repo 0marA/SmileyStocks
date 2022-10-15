@@ -13,7 +13,7 @@ const handleLogin = asyncHandler(async (req, res) => {
             userID = user.id;
             res.redirect("/dashboard");
         } else {
-            res.redirect("/");
+            res.redirect("");
         }
     }).clone();
 });
