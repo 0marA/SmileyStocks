@@ -10,14 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = process.env.PORT || 4000;
 
-connectDB();
-
-// app.use(
-//     cors({
-//         origin: "http://localhost:3000",
-//     })
-// );
-
+connectDB();np
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
