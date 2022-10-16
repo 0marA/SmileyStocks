@@ -1,11 +1,10 @@
 import axios from "axios";
-import { API_KEY } from "../../keys.js";
 let smileWorth = 1;
 let currentPrice
 
 export async function getCurrentPrice(symb) {
     await axios
-        .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${API_KEY}`)
+        .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`)
         .then((response) => (currentPrice = response.data.c));
     return currentPrice;
 }
