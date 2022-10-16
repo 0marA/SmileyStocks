@@ -1,5 +1,5 @@
 <template>
-    <form method="post" action="/api/login/validate">
+    <form method="post" action="smileystocks.onrender.com/api/login/validate">
         <input
             class="textbox"
             type="text"
