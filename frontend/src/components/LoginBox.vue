@@ -1,31 +1,45 @@
-<template>
-    <form method="post" action="api/login/validate">
-        <input
-            class="textbox"
-            type="text"
-            id="username"
-            name="username"
-            placeholder="Username"
-            style="position: absolute; top: -70px; left: 865px"
-        />
+<script>
+import axios from "axios";
 
-        <div class="Buttons">
-            <button
-                id="REDIRECT_BUTTON"
-                class="buttons"
-                ref="btnToggle"
-                @click="$router.push('/newaccount')"
-            >
-                New Account
-            </button>
-            <input
-                class="buttons"
-                type="submit"
-                value="Submit"
-                style="position: absolute; left: 220px"
-            />
-        </div>
-    </form>
+export default {
+    methods: {
+        async login() {
+            let username = document.getElementById("symbols").value;
+            await axios.post("/api/login/validate", {
+                data: {
+                    username: { username },
+                },
+            });
+        },
+    },
+};
+</script>
+<template>
+    <input
+        class="textbox"
+        type="text"
+        id="username"
+        name="username"
+        placeholder="Username"
+        style="position: absolute; top: -70px; left: 865px"
+    />
+
+    <div class="Buttons">
+        <button
+            id="REDIRECT_BUTTON"
+            class="buttons"
+            ref="btnToggle"
+            @click="$router.push('/newaccount')"
+        >
+            New Account
+        </button>
+        <input
+            class="buttons"
+            type="submit"
+            value="Submit"
+            style="position: absolute; left: 220px"
+        />
+    </div>
 </template>
 
 <style scoped>
