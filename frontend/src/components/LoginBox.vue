@@ -5,7 +5,7 @@ export default {
     methods: {
         async login() {
             let username = document.getElementById("symbols").value;
-            await axios.post("smileystocks.onrender.com/api/login/validate", {
+            await axios.post("google.com", {
                 data: {
                     username: { username },
                 },
