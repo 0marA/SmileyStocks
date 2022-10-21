@@ -1,11 +1,27 @@
+<script>
+import axios from "axios";
+
+export default {
+    methods: {
+        async login() {
+            let username = document.getElementById("symbols").value;
+            await axios.post("smileystocks.onrender.com/api/login/validate", {
+                data: {
+                    username: { username },
+                },
+            });
+        },
+    },
+};
+</script>
 <template>
-    <form method="post" action="smileystocks.onrender.com/api/login/validate">
         <input
             class="textbox"
             type="text"
             id="username"
             name="username"
             placeholder="Username"
+            @click="login()"
             style="position: absolute; top: -70px; left: 865px"
         />
 
@@ -25,7 +41,6 @@
                 style="position: absolute; left: 220px"
             />
         </div>
-    </form>
 </template>
 
 <style scoped>
