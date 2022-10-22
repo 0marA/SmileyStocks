@@ -81,20 +81,23 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await fetch(
+    // Returns a JSON of all the stuff in a users schema
+    let resData;
+    await fetch(
         "https://smileystocks.onrender.com/api/dashboard/getstocks"
-    ); // Returns a JSON of all the
-    // stuff in a users schema
+    )
+        .then((response) => response.json())
+        .then((json) => resData = json.stocks);
 
     try {
         // If the user has no symbols then just return
-        res.data.stocks;
+        resData[1];
     } catch (err) {
         return;
     }
 
-    for (let x = 0; x < res.data.stocks.length; x++) {
-        let stock = res.data.stocks[x];
+    for (let x = 0; x < resData.length; x++) {
+        let stock = resData[x];
         userStocksMap.set(
             Object.keys(stock), // Object.keys(stock) returns the keys of the object
             Object.values(stock)
