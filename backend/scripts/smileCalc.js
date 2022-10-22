@@ -3,7 +3,7 @@ let smileWorth = 1;
 let currentPrice
 
 export async function getCurrentPrice(symb) {
-    await axios
+    await this.axios
         .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`)
         .then((response) => (currentPrice = response.data.c));
     return currentPrice;
