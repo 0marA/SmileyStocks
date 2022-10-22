@@ -11,7 +11,7 @@ connectDB();
 
 app.use(
     cors({
-        origin: "https://smileystocks.onrender.com",
+        origin: "https://smileystocks.onrender.com/*",
     })
 );
 
