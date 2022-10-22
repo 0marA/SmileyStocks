@@ -1,5 +1,8 @@
 <template>
-    <form method="post" action="https://smileystocks.onrender.com/api/login/validate">
+    <form
+        method="post"
+        action="https://smileystocks.onrender.com/api/login/validate"
+    >
         <input
             class="textbox"
             type="text"
@@ -27,7 +30,6 @@
         </div>
     </form>
 </template>
-
 
 <style scoped>
 .Buttons {

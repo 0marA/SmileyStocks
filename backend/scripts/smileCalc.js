@@ -1,9 +1,11 @@
 let smileWorth = 1;
-let currentPrice
+let currentPrice;
 
 export async function getCurrentPrice(symb) {
-    await this.axios
-        .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`)
+    await Vue.axios
+        .get(
+            `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
+        )
         .then((response) => (currentPrice = response.data.c));
     return currentPrice;
 }
@@ -15,7 +17,7 @@ export async function getSmiles() {
     let symbolsQueried = new Map(); // Every time a price is queried, it'll be added here along
     // with its price so that if there are symbols in non
     // sequential order, there won't be a need to re-query the
-    // APIand the price will be sorted with the symbol
+    // API and the price will be sorted with the symbol
     let smiles = [];
 
     // Gets the current price for all of the symbols the user has
@@ -24,27 +26,24 @@ export async function getSmiles() {
         let btPrice = userDataArray[x][1];
 
         if (symbolsQueried.has(symbol)) {
-            // If the symbol has already been queried, then just get the price from
-            // the array
+            // If the symbol has already been queried, then just get the price from the array
             currentPrice = symbolsQueried.get(symbol);
         } else {
-            // If the symbol has not been queried, then query the API and add it the
-            // map
+            // If the symbol has not been queried, then query the API and add it the map
             currentPrice = await getCurrentPrice(symbol);
             symbolsQueried.set(symbol, currentPrice);
         }
 
         let smile;
         let deltaPrice = currentPrice - btPrice;
-        for (let i = 0; i < (Math.abs(deltaPrice) / smileWorth); i++) {
-          if (deltaPrice > 0) {
-            if (smiles[smiles.length - 1] == "(") smiles.pop();
-            else smiles.push(")");
-        } else if (deltaPrice < 0)
-            if (smiles[smiles.length - 1] == ")") smiles.pop();
-            else smiles.push("(");
+        for (let i = 0; i < Math.abs(deltaPrice) / smileWorth; i++) {
+            if (deltaPrice > 0) {
+                if (smiles[smiles.length - 1] == "(") smiles.pop();
+                else smiles.push(")");
+            } else if (deltaPrice < 0)
+                if (smiles[smiles.length - 1] == ")") smiles.pop();
+                else smiles.push("(");
         }
-
     }
 
     return "Smiles: :" + smiles.join("");
@@ -54,19 +53,39 @@ export async function seeMySymbols() {
     let userData = await getUserStocks();
     let userDataArray = userData.userDataArray;
     let userSymbols = [];
+    let uniqueSymbols = [];
 
     for (let i = 0; i < userDataArray.length; i++) {
         let symbolName = userDataArray[i][0];
         let price = userDataArray[i][1];
-        userSymbols.push(symbolName + " BT: " + price);
+        userSymbols.push(symbolName + " BT @ $ " + price);
     }
-    return userSymbols;
+
+    for (let i = 0; i < userSymbols.length; i++) {
+        if (userSymbols[i] !== userSymbols[i + 1]) {
+            uniqueSymbols.push(userSymbols[i]);
+        }
+    }
+
+    for (let i = 0; i < uniqueSymbols.length; i++) {
+        let numOfSymbs = 0;
+        for (let j = 0; j < userSymbols.length; j++) {
+            if (uniqueSymbols[i] === userSymbols[j]) {
+                numOfSymbs++;
+            }
+        }
+        uniqueSymbols[i] += " x " + numOfSymbs;
+    }
+
+    return uniqueSymbols;
 }
 
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await axios.get("https://smileystocks.onrender.com/api/dashboard/getstocks"); // Returns a JSON of all the
+    const res = await Vue.axios.get(
+        "https://smileystocks.onrender.com/api/dashboard/getstocks"
+    ); // Returns a JSON of all the
     // stuff in a users schema
 
     try {

@@ -1,9 +1,10 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
+import { getUserID } from "../scripts/handleLogin.js";
 
 const getUsername = asyncHandler(async (req, res) => {
-    const user = await User.find();
-    res.json(user);
+    const user = await User.findById(getUserID());
+    res.json(user.username);
 });
 
 const addUsername = asyncHandler(async (req, res) => {

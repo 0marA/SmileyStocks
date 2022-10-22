@@ -2,7 +2,9 @@ import asyncHandler from "express-async-handler";
 import User from "../models/user.js";
 
 let userID = "";
+let username = "";
 const handleLogin = asyncHandler(async (req, res) => {
+    username = req.body.username;
     if (!req.body.username) {
         res.status(400);
         throw new Error("Missing Username");
