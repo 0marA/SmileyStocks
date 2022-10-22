@@ -5,7 +5,7 @@ export default {
     methods: {
         async login() {
             let username = document.getElementById("symbols").value;
-            await axios.post("google.com", {
+            await axios.post("/api/login/validate", {
                 data: {
                     username: { username },
                 },
