@@ -1,5 +1,5 @@
 <template>
-    <form method="post" action="http://localhost:4000/api/newaccount/adding">
+    <form method="post" action="/api/newaccount/adding">
         <input
             class="textbox"
             type="text"

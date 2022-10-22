@@ -13,14 +13,15 @@ const handleLogin = asyncHandler(async (req, res) => {
     User.findOne({ username: req.body.username }, (err, user) => {
         if (user != null || user != undefined) {
             userID = user.id;
-            res.redirect(`http://localhost:3000/dashboard`);
+            res.redirect("https://smileystocks.netlify.app/dashboard");
         } else {
-            res.redirect("http://localhost:3000/");
+            res.redirect("https://smileystocks.netlify.app/");
         }
     }).clone();
 });
 
-function getUserID() { return userID; }
-function getUsername() { return username; }
+function getUserID() {
+    return userID;
+}
 
 export { handleLogin, getUserID, getUsername };

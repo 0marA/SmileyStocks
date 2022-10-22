@@ -40,7 +40,7 @@ export default {
 };
 </script>
 <template>
-    <form method="post" action="api/dashboard/addstock">
+    <form method="post" action="https://smileystocks.onrender.com/api/dashboard/addstock">
         <input
             class="textbox"
             type="text"
