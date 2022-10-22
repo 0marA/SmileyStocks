@@ -1,4 +1,3 @@
-import axios from "axios";
 let smileWorth = 1;
 let currentPrice
 
