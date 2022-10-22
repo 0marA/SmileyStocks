@@ -1,13 +1,10 @@
 let smileWorth = 1;
 let currentPrice;
-import axios from "redaxios";
 
 export async function getCurrentPrice(symb) {
-    await axios
-        .get(
-            `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
-        )
-        .then((response) => (currentPrice = response.data.c));
+    await fetch(
+        `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
+    ).then((response) => (currentPrice = response.data.c));
     return currentPrice;
 }
 
@@ -84,7 +81,7 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await axios.get(
+    const res = await fetch(
         "https://smileystocks.onrender.com/api/dashboard/getstocks"
     ); // Returns a JSON of all the
     // stuff in a users schema
