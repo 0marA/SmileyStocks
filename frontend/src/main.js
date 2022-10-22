@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import axios from 'axios'
+import App from "./App.vue";
 import VueAxios from 'vue-axios'
 
 const app = createApp(App)
