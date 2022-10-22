@@ -1,4 +1,4 @@
-
+import axios from "axios";
 let smileWorth = 1;
 let currentPrice
 
@@ -67,7 +67,7 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await axios.get("/api/dashboard/getstocks"); // Returns a JSON of all the
+    const res = await axios.get("https://smileystocks.onrender.com/api/dashboard/getstocks"); // Returns a JSON of all the
     // stuff in a users schema
 
     try {

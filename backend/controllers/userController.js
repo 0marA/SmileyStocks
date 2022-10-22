@@ -13,9 +13,9 @@ const addUsername = asyncHandler(async (req, res) => {
     }
     try {
         await User.create({ username: req.body.username });
-        res.redirect("/dashboard");
+        res.redirect("https://smileystocks.netlify.app/dashboard");
     } catch {
-        res.redirect("/");
+        res.redirect("https://smileystocks.netlify.app");
     }
 });
 

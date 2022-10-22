@@ -42,7 +42,7 @@ const addStock = asyncHandler(async (req, res) => {
             }
         );
     }
-    res.redirect("/dashboard");
+    res.redirect("https://smileystocks.netlify.app/dashboard");
 });
 
 const updateStock = asyncHandler(async (req, res) => {
