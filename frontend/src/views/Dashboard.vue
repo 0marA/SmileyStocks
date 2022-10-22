@@ -1,7 +1,7 @@
 <script setup>
 import ManageSymbols from "/src/components/ManageSymbols.vue";
 import Smiles from "../components/Smiles.vue";
-import axios from "axios";
+import axios from "redaxios";
 </script>
 <script>
 export default {

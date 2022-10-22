@@ -1,6 +1,6 @@
 let smileWorth = 1;
 let currentPrice;
-import axios from "axios";
+import axios from "redaxios";
 
 export async function getCurrentPrice(symb) {
     await axios
