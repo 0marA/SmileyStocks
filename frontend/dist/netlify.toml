@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "/api/login/validate"
-  to = "https://smileystocks.onrender.com/api/login/validate"
-  status = 200
-  force = true # COMMENT: ensure that we always redirect
