@@ -1,8 +1,9 @@
 let smileWorth = 1;
 let currentPrice;
+import axios from "axios";
 
 export async function getCurrentPrice(symb) {
-    await Vue.axios
+    await axios
         .get(
             `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
         )
@@ -83,7 +84,7 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-    const res = await Vue.axios.get(
+    const res = await axios.get(
         "https://smileystocks.onrender.com/api/dashboard/getstocks"
     ); // Returns a JSON of all the
     // stuff in a users schema
