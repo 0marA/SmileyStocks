@@ -8,6 +8,12 @@ const port = process.env.PORT || 4000;
 
 connectDB();
 
+app.use(
+    cors({
+        origin: "https://smileystocks.onrender.com/api/dashboard/getstocks",
+    })
+);
+
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
