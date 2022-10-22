@@ -14,7 +14,7 @@
                 id="REDIRECT_BUTTON"
                 class="buttons"
                 ref="btnToggle"
-                @click="$router.push('/newaccount')"
+                @click="$router.push('/dashboard')"
             >
                 New Account
             </button>
