@@ -2,8 +2,10 @@ let smileWorth = 1;
 let currentPrice;
 
 export async function getCurrentPrice(symb) {
-    await this.axios
-        .get(`https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`)
+    await Vue.axios
+        .get(
+            `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
+        )
         .then((response) => (currentPrice = response.data.c));
     return currentPrice;
 }
@@ -81,12 +83,10 @@ export async function seeMySymbols() {
 async function getUserStocks() {
     let userStocksMap = new Map();
 
-<<<<<<< HEAD
-    const res = await axios.get("/api/dashboard/getstocks"); // Returns a JSON of all the stuff in a users schema
-=======
-    const res = await axios.get("https://smileystocks.onrender.com/api/dashboard/getstocks"); // Returns a JSON of all the
+    const res = await Vue.axios.get(
+        "https://smileystocks.onrender.com/api/dashboard/getstocks"
+    ); // Returns a JSON of all the
     // stuff in a users schema
->>>>>>> origin/master
 
     try {
         // If the user has no symbols then just return

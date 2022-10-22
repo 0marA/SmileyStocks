@@ -24,4 +24,4 @@ function getUserID() {
     return userID;
 }
 
-export { handleLogin, getUserID, getUsername };
+export { handleLogin, getUserID };

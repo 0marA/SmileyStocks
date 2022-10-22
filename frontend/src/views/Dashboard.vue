@@ -1,7 +1,6 @@
 <script setup>
 import ManageSymbols from "/src/components/ManageSymbols.vue";
 import Smiles from "../components/Smiles.vue";
-import axios from "axios";
 </script>
 <script>
 export default {
@@ -16,7 +15,7 @@ export default {
     methods: {
         async getUsername() {
             try {
-                const username = await axios.get("/api/");
+                const username = await Vue.axios.get("/api/");
                 return username.data;
             } catch (error) {
                 window.location.href = "/";

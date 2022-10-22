@@ -1,6 +1,5 @@
 <script>
 import { seeMySymbols } from "../../../backend/scripts/smileCalc.js";
-import axios from "axios";
 
 export default {
     data() {
@@ -27,20 +26,15 @@ export default {
         async asyncDeleteSymbols() {
             let symbol = document.getElementById("symbols").value;
             let quantity = document.getElementById("quantity").value;
-            await axios.delete("/api/dashboard/deleteStock", {
-                // symbol: { symbol },
-                // quantity: { quantity },
-                data: {
-                    symbol: "TSLA",
-                    quantity: 2,
-                },
-            });
         },
     },
 };
 </script>
 <template>
-    <form method="post" action="https://smileystocks.onrender.com/api/dashboard/addstock">
+    <form
+        method="post"
+        action="https://smileystocks.onrender.com/api/dashboard/addstock"
+    >
         <input
             class="textbox"
             type="text"
