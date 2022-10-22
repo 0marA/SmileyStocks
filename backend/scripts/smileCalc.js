@@ -4,7 +4,7 @@ let currentPrice;
 export async function getCurrentPrice(symb) {
     await fetch(
         `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${process.env.API_KEY}`
-    ).then((response) => (currentPrice = response.data.c));
+    ).then((response) => (currentPrice = response.c));
     return currentPrice;
 }
 
