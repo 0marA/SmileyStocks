@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
     methods: {
         async login() {
-            let username = document.getElementById("symbols").value;
+            let username = document.getElementById("username").value;
             await axios.post("/api/login/validate", {
                 data: {
                     username: { username },
