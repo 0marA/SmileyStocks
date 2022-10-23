@@ -16,13 +16,16 @@ export default {
     },
     methods: {
         async getUsername() {
+            let apiResponse = "failed";
             try {
-                const apiResponse = await axios.get("/api/");
+                apiResponse = await axios.get("/api/");
                 this.username = apiResponse.data;
-                console.log("username is" + username);
+                console.log("username is" + apiResponse.data);
             } catch (error) {
                 window.location.href = "/";
             }
+            console.log(apiResponse.data);
+            return apiResponse.data;
         },
     },
 };
