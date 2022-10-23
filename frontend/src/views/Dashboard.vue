@@ -24,7 +24,7 @@ export default {
             } catch (error) {
                 window.location.href = "/";
             }
-            return apiResponse.data;
+            return await apiResponse.data;
         },
     },
 };
