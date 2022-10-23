@@ -4,6 +4,7 @@ import { getUserID } from "../scripts/handleLogin.js";
 
 const getUsername = asyncHandler(async (req, res) => {
     const user = await User.findById(getUserID());
+    console.log(user.username);
     res.json(user.username);
 });
 
