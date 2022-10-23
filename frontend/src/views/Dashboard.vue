@@ -2,6 +2,7 @@
 import ManageSymbols from "/src/components/ManageSymbols.vue";
 import Smiles from "../components/Smiles.vue";
 import axios from "axios";
+import WelcomeMessage from "/src/components/WelcomeMessage.vue";
 </script>
 <script>
 export default {
@@ -10,27 +11,37 @@ export default {
             username: undefined,
         };
     },
-    async mounted() {
-        this.username = await this.getUsername();
-    },
     methods: {
         async getUsername() {
             try {
                 const username = await axios.get("/api/");
-                return username.data;
+                this.username = username.data;
+                console.log(username);
             } catch (error) {
                 window.location.href = "/";
             }
         },
     },
+    created() {
+        this.getUsername();
+    },
 };
 </script>
 
 <template>
-    <h1 style="position: absolute; top: 0px; color: rgb(19, 83, 19)">
-        Hey {{ username }}, welcome to your dashboard!
-    </h1>
+    <div class="WelcomeMesssage">
+        <WelcomeMessage :msg="username" />
+    </div>
 
     <ManageSymbols />
     <Smiles />
 </template>
+
+<style scoped>
+.WelcomeMesssage {
+    position: absolute;
+    top: 0px;
+}
+</style>
+
+
