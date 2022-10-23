@@ -1,10 +1,13 @@
 let smileWorth = 1;
 let currentPrice;
-
+const FINNHB_TOKEN = "c7df8tiad3i911lpfov0"; // yeah ik ik, but netlify is really annoying so go ahead and steal my stock api key.
 export async function getCurrentPrice(symb) {
     await fetch(
-        `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${"c7df8tiad3i911lpfov0"}`
-    ).then((response) => (currentPrice = response.c));
+        `https://finnhub.io/api/v1/quote?symbol=${symb}&token=${FINNHB_TOKEN}`
+    )
+        .then((response) => (response = response.json()))
+        .then((json) => (currentPrice = json.c));
+
     return currentPrice;
 }
 
@@ -22,7 +25,6 @@ export async function getSmiles() {
     for (let x = 0; x < userDataArray.length; x++) {
         let symbol = userDataArray[x][0].toString();
         let btPrice = userDataArray[x][1];
-
         if (symbolsQueried.has(symbol)) {
             // If the symbol has already been queried, then just get the price from the array
             currentPrice = symbolsQueried.get(symbol);
@@ -32,19 +34,30 @@ export async function getSmiles() {
             symbolsQueried.set(symbol, currentPrice);
         }
 
-        let smile;
         let deltaPrice = currentPrice - btPrice;
+        //console.log(btPrice);
+        //console.log(deltaPrice);
         for (let i = 0; i < Math.abs(deltaPrice) / smileWorth; i++) {
             if (deltaPrice > 0) {
-                if (smiles[smiles.length - 1] == "(") smiles.pop();
-                else smiles.push(")");
+                if (smiles[smiles.length - 1] == "(") {
+                    console.log("test");
+                    smiles.pop();
+                } else {
+                    console.log("test2");
+                    smiles.push(")");
+                }
             } else if (deltaPrice < 0)
-                if (smiles[smiles.length - 1] == ")") smiles.pop();
-                else smiles.push("(");
+                if (smiles[smiles.length - 1] == ")") {
+                    console.log("test3");
+                    smiles.pop();
+                } else {
+                    console.log("test4");
+                    smiles.push("(");
+                }
         }
     }
 
-    return "Smiles: :" + smiles.join("");
+    return ":" + smiles.join("");
 }
 
 export async function seeMySymbols() {

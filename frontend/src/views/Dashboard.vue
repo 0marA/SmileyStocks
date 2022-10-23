@@ -29,7 +29,7 @@ export default {
 
 <template>
     <div class="WelcomeMesssage">
-        <WelcomeMessage :msg="username" />
+        <WelcomeMessage :msg=" 'Hey ' + username + ', welcome to your dashboard! '"/>
     </div>
     <ManageSymbols />
     <Smiles />
