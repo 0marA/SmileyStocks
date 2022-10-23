@@ -57,6 +57,9 @@ export async function getSmiles() {
         }
     }
 
+    if (smiles.length == 0) {
+        return "Add some symbols to get started!";
+    } 
     return ":" + smiles.join("");
 }
 
