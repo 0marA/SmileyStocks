@@ -1,5 +1,5 @@
 <template>
-    <form method="post" action="/api/newaccount/adding">
+    <form method="post" action="https://smileystocks.onrender.com/api/newaccount/adding">
         <input
             class="textbox"
             type="text"
