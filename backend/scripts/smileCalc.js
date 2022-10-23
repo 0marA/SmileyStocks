@@ -79,8 +79,11 @@ export async function seeMySymbols() {
 }
 
 export async function getUsername() {
-    const apiResponse = await axios.get("/api/");
-    return apiResponse.data;
+    let username;
+    const apiResponse = await fetch(
+        "https://smileystocks.onrender.com/api/"
+    ).then((response) => (username = response.json()));
+    return await username;
 }
 
 async function getUserStocks() {
