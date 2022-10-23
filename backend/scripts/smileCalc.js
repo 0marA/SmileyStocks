@@ -78,16 +78,19 @@ export async function seeMySymbols() {
     return uniqueSymbols;
 }
 
+export async function getUsername() {
+    const apiResponse = await axios.get("/api/");
+    return apiResponse.data;
+}
+
 async function getUserStocks() {
     let userStocksMap = new Map();
 
     // Returns a JSON of all the stuff in a users schema
     let resData;
-    await fetch(
-        "https://smileystocks.onrender.com/api/dashboard/getstocks"
-    )
+    await fetch("https://smileystocks.onrender.com/api/dashboard/getstocks")
         .then((response) => response.json())
-        .then((json) => resData = json.stocks);
+        .then((json) => (resData = json.stocks));
 
     try {
         // If the user has no symbols then just return

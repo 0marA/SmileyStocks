@@ -1,10 +1,10 @@
 <script setup>
 import ManageSymbols from "/src/components/ManageSymbols.vue";
 import Smiles from "../components/Smiles.vue";
-import axios from "axios";
 import WelcomeMessage from "/src/components/WelcomeMessage.vue";
 </script>
 <script>
+import { getUsername } from "../../../backend/scripts/smileCalc.js";
 export default {
     data() {
         return {
@@ -12,19 +12,16 @@ export default {
         };
     },
     async mounted() {
-        this.username = await this.getUsername();
+        this.username = await this.fetchUsername();
     },
     methods: {
-        async getUsername() {
-            let apiResponse = "failed to get username";
+        async fetchUsername() {
             try {
-                apiResponse = await axios.get("/api/");
-                this.username = apiResponse.data;
-                console.log("username is" + apiResponse);
+                getUsername();
             } catch (error) {
                 window.location.href = "/";
             }
-            return await apiResponse.data;
+            return await getUsername();
         },
     },
 };
