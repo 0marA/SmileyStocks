@@ -39,27 +39,17 @@ export async function getSmiles() {
         //console.log(deltaPrice);
         for (let i = 0; i < Math.abs(deltaPrice) / smileWorth; i++) {
             if (deltaPrice > 0) {
-                if (smiles[smiles.length - 1] == "(") {
-                    console.log("test");
-                    smiles.pop();
-                } else {
-                    console.log("test2");
-                    smiles.push(")");
-                }
+                if (smiles[smiles.length - 1] == "(") smiles.pop();
+                else smiles.push(")");
             } else if (deltaPrice < 0)
-                if (smiles[smiles.length - 1] == ")") {
-                    console.log("test3");
-                    smiles.pop();
-                } else {
-                    console.log("test4");
-                    smiles.push("(");
-                }
+                if (smiles[smiles.length - 1] == ")") smiles.pop();
+                else smiles.push("(");
         }
     }
 
     if (smiles.length == 0) {
         return "Add some symbols to get started!";
-    } 
+    }
     return ":" + smiles.join("");
 }
 
