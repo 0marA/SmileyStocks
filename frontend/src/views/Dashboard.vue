@@ -11,19 +11,19 @@ export default {
             username: undefined,
         };
     },
+    async mounted() {
+        this.username = await this.getUsername();
+    },
     methods: {
         async getUsername() {
             try {
-                const username = await axios.get("/api/");
-                this.username = username.data;
-                console.log(username);
+                const apiResponse = await axios.get("/api/");
+                this.username = apiResponse.data;
+                console.log("username is" + username);
             } catch (error) {
                 window.location.href = "/";
             }
         },
-    },
-    created() {
-        this.getUsername();
     },
 };
 </script>
