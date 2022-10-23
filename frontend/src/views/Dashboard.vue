@@ -29,10 +29,6 @@ export default {
 </script>
 
 <template>
-    <div class="WelcomeMesssage">
-        <WelcomeMessage :msg="username" />
-    </div>
-
     <ManageSymbols />
     <Smiles />
 </template>
@@ -43,4 +39,3 @@ export default {
     top: 0px;
 }
 </style>
-
