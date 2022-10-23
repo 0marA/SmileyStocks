@@ -3,6 +3,7 @@
         method="post"
         action="https://smileystocks.onrender.com/api/login/validate"
     >
+        <input type="submit" style="display: none" />
         <input
             class="textbox"
             type="text"
@@ -14,6 +15,14 @@
 
         <div class="Buttons">
             <button
+                class="buttons"
+                type="submit"
+                value="Submit"
+                style="position: absolute; left: 220px"
+            >
+                Submit
+            </button>
+            <button
                 id="REDIRECT_BUTTON"
                 class="buttons"
                 ref="btnToggle"
@@ -21,12 +30,6 @@
             >
                 New Account
             </button>
-            <input
-                class="buttons"
-                type="submit"
-                value="Submit"
-                style="position: absolute; left: 220px"
-            />
         </div>
     </form>
 </template>

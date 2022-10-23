@@ -1,5 +1,8 @@
 <template>
-    <form method="post" action="https://smileystocks.onrender.com/api/newaccount/adding">
+    <form
+        method="post"
+        action="https://smileystocks.onrender.com/api/newaccount/adding"
+    >
         <input
             class="textbox"
             type="text"
@@ -11,6 +14,12 @@
 
         <div class="Buttons">
             <button
+                class="buttons"
+                type="submit"
+                value="Submit"
+                style="position: absolute; left: 220px"
+            > Submit</button>
+            <button
                 id="REDIRECT_BUTTON"
                 class="buttons"
                 ref="btnToggle"
@@ -18,12 +27,6 @@
             >
                 Login Page
             </button>
-            <input
-                class="buttons"
-                type="submit"
-                value="Submit"
-                style="position: absolute; left: 220px"
-            />
         </div>
     </form>
 </template>
